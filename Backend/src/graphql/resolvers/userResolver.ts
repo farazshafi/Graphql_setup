@@ -21,6 +21,15 @@ export const userResolver = {
                 age
             }
             return createUser(newUser)
+        },
+        editUserById:(parent,args) => {
+            const {id,name,email,age,isActive} = args
+            const user =  getUserById(id)
+            if(name !== undefined) user.name = name
+            if(email !== undefined) user.email = email
+            if(age !== undefined) user.age = age
+            if(isActive !== undefined) user.isActive = isActive
+            return user
         }
     }
 }
